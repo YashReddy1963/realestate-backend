@@ -23,14 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-n$wzwsri&oe9cryk_buo%ashsufbp_9upesklc(%&*npy#w&e-"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "https://realestate-backend-5hg5.onrender.com",
+    "realestate-backend-5hg5.onrender.com",
 ]
 
+external_host = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
+if external_host:
+    ALLOWED_HOSTS.append(external_host)
 
 # Application definition
 
@@ -131,8 +134,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EXCEL_FILE_PATH = BASE_DIR / "media" / "Sample_data.xlsx"
 
-CORS_ALLOW_ALL_ORIGINS = [
-    "http://localhost:8080",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://realestate-backend-5hg5.onrender.com",
+]
