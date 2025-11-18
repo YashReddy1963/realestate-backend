@@ -25,7 +25,11 @@ SECRET_KEY = "django-insecure-n$wzwsri&oe9cryk_buo%ashsufbp_9upesklc(%&*npy#w&e-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "https://realestate-backend-5hg5.onrender.com",
+]
 
 
 # Application definition
@@ -127,4 +131,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EXCEL_FILE_PATH = BASE_DIR / "media" / "Sample_data.xlsx"
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = [
+    "http://localhost:8080",
+]
+
+CORS_ALLOW_CREDENTIALS = True
